@@ -1,0 +1,13 @@
+# Python 가상환경 폴더 제외
+.venv/
+__pycache__/
+*.pyc
+
+# 오디오 원본 및 분석 결과 텍스트 제외 (개인정보 보호 필수)
+*.m4a
+*.mp3
+*.wav
+SavedResults/
+
+# 맥북 시스템 파일 제외
+.DS_Store
