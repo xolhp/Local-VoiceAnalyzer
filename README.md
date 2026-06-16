@@ -33,8 +33,8 @@ source .venv/bin/activate
 pip install openai-whisper requests tqdm
 
 ### 2. 파이프라인 구동 순서
-# 1단계: 음성 파일 받아쓰기 실행 (SavedResults/ 폴더 내에 원본본문 생성)
+### 1단계: 음성 파일 받아쓰기 실행 (SavedResults/ 폴더 내에 원본본문 생성)
 python 1_stt_transcriber.py
 
-# 2단계: 생성된 본문을 바탕으로 AI 상세 보고서 생성 (SavedResults/ 폴더 내에 최종보고서 생성)
+### 2단계: 생성된 본문을 바탕으로 AI 상세 보고서 생성 (SavedResults/ 폴더 내에 최종보고서 생성)
 python 2_ai_summarizer.py
