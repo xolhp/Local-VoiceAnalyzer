@@ -3,7 +3,7 @@ import requests
 
 def run_ai_summary(text_file_path, output_dir_path):
     if not os.path.exists(text_file_path):
-        print(f"❌ 분석할 텍스트 파일이 없습니다: '{text_file_path}'\n-> 1번 코드를 먼저 실행해 주세요.")
+        print(f" 분석할 텍스트 파일이 없습니다: '{text_file_path}'\n-> 1번 코드를 먼저 실행해 주세요.")
         return
 
     base_name = os.path.splitext(os.path.basename(text_file_path))[0].replace("_원본본문", "")
@@ -40,7 +40,7 @@ def run_ai_summary(text_file_path, output_dir_path):
         "- 대화 중 언급된 청구 가능한 보험금 종류, 제출해야 하거나 확인해야 하는 서류 목록, 방문해야 하는 기관 등이 있다면 빠짐없이 분류하여 적어주세요.\n\n"
         
         "## 4. 사업 및 업무 인수인계/마무리 사항\n"
-        "- 고인이 남긴 사업이나 정리해야 하는 비즈니스적 업무, 조율 중인 정산 내용이나 마감 지침에 대해 오간 대화를 구체적으로 요약하세요.\n\n"
+        "- 사업이나 정리해야 하는 비즈니스적 업무, 조율 중인 정산 내용이나 마감 지침에 대해 오간 대화를 구체적으로 요약하세요.\n\n"
         
         "## 5. 향후 실행 과제 및 행동 지침 (Action Plan)\n"
         "- [화자 A]가 해야 할 일 (To-do 목록 2~3개 이상 구체적으로)\n"
@@ -58,7 +58,7 @@ def run_ai_summary(text_file_path, output_dir_path):
         response = requests.post(ollama_url, json=payload, timeout=300)
         ai_summary_result = response.json().get("response", "요약 생성 실패")
     except Exception as e:
-        print(f"❌ 로컬 LLM(Ollama) 연동 실패: {e}")
+        print(f" 로컬 LLM(Ollama) 연동 실패: {e}")
         return
 
     with open(output_file_path, "w", encoding="utf-8") as f:
@@ -66,11 +66,11 @@ def run_ai_summary(text_file_path, output_dir_path):
         
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print("✓ 2단계 완료: 항목별 상세 리포트 생성 성공!")
-    print(f"📄 최종 보고서 파일: {os.path.abspath(output_file_path)}")
+    print(f" 최종 보고서 파일: {os.path.abspath(output_file_path)}")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
 if __name__ == "__main__":
-    TARGET_TEXT_FILE = "./SavedResults/06.16 신이서 통화_원본본문.txt"
+    TARGET_TEXT_FILE = "./SavedResults/00.00 --- 통화_원본본문.txt"
     OUTPUT_DIRECTORY = "./SavedResults"
     
     run_ai_summary(TARGET_TEXT_FILE, OUTPUT_DIRECTORY)
